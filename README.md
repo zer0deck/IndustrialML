@@ -1,12 +1,19 @@
 # IndustrialML
 
-## About
 
 [IML](github.com/zer0deck/IndustrialML/) is a repo for ML Industry ITMO 2022 course.
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/zer0deck/BaldErDash)](https://github.com/zer0deck/IndustrialML/releases)
+## About
 
-![image](sheme.png)
+This repo contains two projects:
+
+1. [Lab_1](https://github.com/zer0deck/IndustrialML/tree/main/Lab_1)
+
+![image](image_1.png)
+
+2. [Lab_2](https://github.com/zer0deck/IndustrialML/tree/main/Lab_2)
+
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/zer0deck/IndustrialML)](https://github.com/zer0deck/IndustrialML/releases)
 
 ## Table of content
 
