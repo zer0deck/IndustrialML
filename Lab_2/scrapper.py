@@ -18,11 +18,11 @@ if __name__=="__main__":
 
     # translator= Translator(from_lang="russian", to_lang="english")
     df_dict = {'title': [], 'genre': [], 'description': [], 'img_link': []}
-    genres = ['Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Drama', 'Family', 'Fantasy', 'Film-Noir', 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Short', 'Sport', 'Superhero', 'Thriller', 'War', 'Western']
+    genres = ['Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Drama', 'Family', 'Fantasy', 'Film-Noir', 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Short', 'Sport', 'Superhero', 'Thriller', 'War', 'Western', 'Documentary']
     # 'Documentary'
-    for i in range(0, 41, 5):
+    for i in range(5, 51, 5):
         for genre in genres:
-                url = f'https://www.imdb.com/search/title/?title_type=feature&genres={genre}&start={i}1&explore=genres&ref_=adv_explore_rhs'
+                url = f'https://www.imdb.com/search/title/?genres={genre}&start={i}1&explore=genres&ref_=adv_explore_rhs'
                 response = requests.get(url, timeout=10)
                 soup = BeautifulSoup(response.text, "html.parser")
                 movies = soup.select('h3.lister-item-header')
@@ -53,9 +53,9 @@ if __name__=="__main__":
                         image_links = [img.attrs.get('src') for img in film_soup.select('img')]
                         image_url = image_links[0]
                         img = Image.open(requests.get(image_url, stream = True).raw)
-                        img.save(f'Lab_2/images/{genre}_{i}{index+1}.jpg')
-                        df_dict['img_link'].append(f'{genre}_{i}{index+1}.jpg')
-                        temp.append(f'{genre}_{i}{index+1}.jpg')
+                        img.save(f'Lab_2/images/{genre}_{i*10+index+1}.jpg')
+                        df_dict['img_link'].append(f'{genre}_{i*10+index+1}.jpg')
+                        temp.append(f'{genre}_{i*10+index+1}.jpg')
 
                         # Short description
                         description = str(list(film_soup.select('span.sc-16ede01-1'))[0])
