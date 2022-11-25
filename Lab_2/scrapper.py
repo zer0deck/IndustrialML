@@ -17,8 +17,8 @@ from bs4 import BeautifulSoup
 if __name__=="__main__":
     df = pd.read_csv('Lab_2/data.csv', sep=';', encoding='utf-8')
     # translator= Translator(from_lang="russian", to_lang="english")
-    genres = ['Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Drama', 'Family', 'Fantasy', 'Film-Noir', 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Short', 'Sport', 'Superhero', 'Thriller', 'War', 'Western', 'Documentary']
-    # genres = ['Short', 'Sport', 'Superhero', 'Thriller', 'War', 'Western', 'Documentary']
+    genres = ['Romance', 'Sci-Fi', 'Short', 'Sport', 'Superhero', 'Thriller', 'War', 'Western', 'Documentary']
+    # genres = ['Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Drama', 'Family', 'Fantasy', 'Film-Noir', 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Short', 'Sport', 'Superhero', 'Thriller', 'War', 'Western', 'Documentary']
     for i in range(15, 21, 5):
         for genre in genres:
             if genre == 'Superhero':
