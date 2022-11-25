@@ -15,12 +15,10 @@ from bs4 import BeautifulSoup
 # from translate import Translator
 
 if __name__=="__main__":
-
+    df = pd.read_csv('Lab_2/data.csv', sep=';', encoding='utf-8')
     # translator= Translator(from_lang="russian", to_lang="english")
-    df_dict = {'title': [], 'genre': [], 'description': [], 'img_link': []}
     genres = ['Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Drama', 'Family', 'Fantasy', 'Film-Noir', 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Short', 'Sport', 'Superhero', 'Thriller', 'War', 'Western', 'Documentary']
-    # 'Documentary'
-    for i in range(5, 51, 5):
+    for i in range(25, 51, 5):
         for genre in genres:
                 url = f'https://www.imdb.com/search/title/?genres={genre}&start={i}1&explore=genres&ref_=adv_explore_rhs'
                 response = requests.get(url, timeout=10)
@@ -28,9 +26,10 @@ if __name__=="__main__":
                 movies = soup.select('h3.lister-item-header')
                 titles = [a.getText() for a in soup.select('h3.lister-item-header a')]
                 links = [a.attrs.get('href') for a in soup.select('h3.lister-item-header a')]
-                
+                df_dict = {'title': [], 'genre': [], 'description': [], 'img_link': []}
 
                 for index in range(0, len(movies)):
+                    try:
                         df_dict['genre'].append(genre)
                         temp = []
 
@@ -65,11 +64,14 @@ if __name__=="__main__":
                         temp.append(description)
 
                         test=open('Lab_2/log.txt', 'a', encoding="utf-8")
-                        test.write(str(temp)+'\n')
+                        test.write(temp[0]+";"+temp[1]+";"+temp[2]+'\n')
                         test.close()
 
                         print(temp)
                         time.sleep(random.randint(1, 10)/10)
-
-    df = pd.DataFrame(df_dict)
-    df.to_csv('data.csv')
+                    except:
+                        continue
+            
+                temp_df = pd.DataFrame(df_dict)
+                df = df.append(temp_df, ignore_index=True)
+                df.to_csv('Lab_2/data.csv', sep=';', index=None)
