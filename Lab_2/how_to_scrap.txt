@@ -1,0 +1,4 @@
+pipenv install --python 3.8
+cd "path/to/INDUSTRIALML/"
+pip install -r "Lab_2/requirements.txt"
+python -u "Lab_2/scrapper.py"
